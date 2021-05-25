@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "nativetokens"
+version = "0.1.0"
+description = ""
+authors = ["Murad Saeter <murad.sater@cognite.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.7"
+cognite-sdk = "*"
+msal = "*"
+
+[tool.poetry.dev-dependencies]
+black = "^19.10b0"
+isort = "^4.3.21"
+
+[build-system]
+requires = ["poetry>=0.12"]
+build-backend = "poetry.masonry.api"
