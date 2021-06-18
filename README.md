@@ -33,3 +33,4 @@ See the sample in [sample_client_secret.py](sample_client_secret.py). Update var
 
 Make sure the `COGNITE_API_KEY` environment variable are not set, it will override the token setup.
  
+hello world
