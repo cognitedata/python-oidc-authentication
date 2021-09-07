@@ -11,8 +11,7 @@ SCOPES = [f"https://{CDF_CLUSTER}.cognitedata.com/.default"]
 
 CLIENT_SECRET = os.getenv("CLIENT_SECRET")  # store secret in env variable
 
-
-TOKEN_URL = "https://login.microsoftonline.com/%s/oauth2/v2.0/token" % TENANT_ID
+TOKEN_URL = f"https://login.microsoftonline.com/{TENANT_ID}/oauth2/v2.0/token"
 
 client = CogniteClient(
     token_url=TOKEN_URL,
