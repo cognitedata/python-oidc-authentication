@@ -23,7 +23,7 @@ def authenticate_device_code(app):
     else:
         device_flow = app.initiate_device_flow(scopes=SCOPES)
         print(device_flow["message"])  # print device code to screen
-        creds = app.acquire_token_interactive(scopes=SCOPES, port=PORT,)
+        creds = app.acquire_token_by_device_flow(flow=device_flow)
     return creds
 
 
