@@ -1,11 +1,10 @@
-# Native tokens authentication with Python SDK with Azure AD
+# OIDC authentication with Cognite Python SDK
 
 The python SDK can be authenticated using:
 * a token retrieved when a user authenticates (running as personal user). 
 * a static client secret, for long running jobs / extractors
 
-A requirement is to set up your project with native tokens, as described in this article: [How to get started with Native Tokens in AAD Complete all 4 steps here (including the experimental part)](https://cognitedata.atlassian.net/wiki/spaces/AUTH/pages/1955397887/How+to+get+started+with+Native+Tokens+in+AAD)
-
+A requirement is to set up your project with OIDC.
 
 # Personal authentication with interactive login
 You can get a token by doing an interactive login a the browser. This is the preferred approach for users to access CDF when running scripts or using Jupyter. If a browser is not available you can use the "device code flow" described below.
