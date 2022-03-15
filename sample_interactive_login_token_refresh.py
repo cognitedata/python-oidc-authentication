@@ -49,7 +49,7 @@ def get_token():
 
 client = CogniteClient(
     token_url=f"{AUTHORITY_URI}/v2.0",
-    token=get_token,
+    token=get_token(),
     token_client_id=CLIENT_ID,
     project=COGNITE_PROJECT,
     base_url=f"https://{CDF_CLUSTER}.cognitedata.com",
