@@ -1,4 +1,5 @@
-from cognite.client import CogniteClient
+from cognite.client import CogniteClient, ClientConfig
+from cognite.client.credentials import OAuthClientCredentials
 import os
 
 # Contact Project Administrator to get these
@@ -13,15 +14,10 @@ CLIENT_SECRET = os.getenv("CLIENT_SECRET")  # store secret in env variable
 
 TOKEN_URL = f"https://login.microsoftonline.com/{TENANT_ID}/oauth2/v2.0/token"
 
-client = CogniteClient(
-    token_url=TOKEN_URL,
-    token_client_id=CLIENT_ID,
-    token_client_secret=CLIENT_SECRET,
-    token_scopes=SCOPES,
-    project=COGNITE_PROJECT,
-    base_url=f"https://{CDF_CLUSTER}.cognitedata.com",
-    client_name="client_secret_test_script",
-    debug=True,
-)
+creds=OAuthClientCredentials(token_url=TOKEN_URL, client_id= CLIENT_ID, scopes= SCOPES, client_secret= CLIENT_SECRET)
+
+cnf = ClientConfig(client_name="my-special-client", project=COGNITE_PROJECT, credentials=creds)
+
+client = CogniteClient(cnf)
 
 print(client.iam.token.inspect())

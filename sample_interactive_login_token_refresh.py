@@ -1,7 +1,8 @@
 import atexit
 import os
 
-from cognite.client import CogniteClient
+from cognite.client import CogniteClient, ClientConfig
+from cognite.client.credentials import Token
 from msal import PublicClientApplication, SerializableTokenCache
 
 # Contact Project Administrator to get these
@@ -47,14 +48,7 @@ def get_token():
     return authenticate_azure(app)["access_token"]
 
 
-client = CogniteClient(
-    token_url=f"{AUTHORITY_URI}/v2.0",
-    token=get_token,
-    token_client_id=CLIENT_ID,
-    project=COGNITE_PROJECT,
-    base_url=f"https://{CDF_CLUSTER}.cognitedata.com",
-    client_name="cognite-python-dev",
-    debug=True,
-)
+cnf = ClientConfig(client_name="my-special-client", project="my-project", credentials=Token(get_token))
+client = CogniteClient(cnf)
 
 print(client.iam.token.inspect())
