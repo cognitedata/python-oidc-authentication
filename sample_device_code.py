@@ -1,4 +1,5 @@
-from cognite.client import CogniteClient
+from cognite.client import CogniteClient, ClientConfig
+from cognite.client.credentials import Token
 from msal import PublicClientApplication
 
 # Contact Project Administrator to get these
@@ -26,13 +27,7 @@ def authenticate_device_code():
 
 creds = authenticate_device_code()
 
-client = CogniteClient(
-    token_url=creds["id_token_claims"]["iss"],
-    token=creds["access_token"],
-    token_client_id=creds["id_token_claims"]["aud"],
-    project=COGNITE_PROJECT,
-    base_url=f"https://{CDF_CLUSTER}.cognitedata.com",
-    client_name="cognite-python-dev",
-)
+cnf = ClientConfig(client_name="my-special-client", project="my-project", credentials=Token(creds["access_token"]))
+client = CogniteClient(cnf)
 
 print(client.iam.token.inspect())
