@@ -5,8 +5,8 @@ description = ""
 authors = ["Murad Saeter <murad.sater@cognite.com>"]
 
 [tool.poetry.dependencies]
-python = "^3.7"
-cognite-sdk = "*"
+python = "^3.8"
+cognite-sdk = "^4.0.1"
 msal = "*"
 
 [tool.poetry.dev-dependencies]
