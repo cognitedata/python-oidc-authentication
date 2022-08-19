@@ -32,7 +32,7 @@ def get_token():
     return authenticate_device_code(app)["access_token"]
 
 
-cnf = ClientConfig(client_name="my-special-client", project="my-project", credentials=Token(get_token))
+cnf = ClientConfig(client_name="my-special-client", project=COGNITE_PROJECT, credentials=Token(get_token))
 client = CogniteClient(cnf)
 
 print(client.iam.token.inspect())
