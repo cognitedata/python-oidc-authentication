@@ -26,7 +26,7 @@ def authenticate_azure():
 
 creds = authenticate_azure()
 
-cnf = ClientConfig(client_name="my-special-client", project="my-project", credentials=Token(creds["access_token"]))
+cnf = ClientConfig(client_name="my-special-client", project=COGNITE_PROJECT, credentials=Token(creds["access_token"]))
 client = CogniteClient(cnf)
 
 
