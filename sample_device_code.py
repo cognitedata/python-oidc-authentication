@@ -27,7 +27,7 @@ def authenticate_device_code():
 
 creds = authenticate_device_code()
 
-cnf = ClientConfig(client_name="my-special-client", project=COGNITE_PROJECT, credentials=Token(creds["access_token"]))
+cnf = ClientConfig(client_name="my-special-client", project=COGNITE_PROJECT, credentials=Token(creds["access_token"]), base_url=f"https://{CDF_CLUSTER}.cognitedata.com")
 client = CogniteClient(cnf)
 
 print(client.iam.token.inspect())
