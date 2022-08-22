@@ -16,7 +16,7 @@ TOKEN_URL = f"https://login.microsoftonline.com/{TENANT_ID}/oauth2/v2.0/token"
 
 creds=OAuthClientCredentials(token_url=TOKEN_URL, client_id= CLIENT_ID, scopes= SCOPES, client_secret= CLIENT_SECRET)
 
-cnf = ClientConfig(client_name="my-special-client", project=COGNITE_PROJECT, credentials=creds)
+cnf = ClientConfig(client_name="my-special-client", project=COGNITE_PROJECT, credentials=creds, base_url=f"https://{CDF_CLUSTER}.cognitedata.com")
 
 client = CogniteClient(cnf)
 
